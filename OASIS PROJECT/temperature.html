@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@3.9.2/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/a242cf38fc.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="flex justify-center mt-40">
+      <div>
+        <h1 class="text-3xl font-black text-white">Temperature Converter</h1>
+        <label class="label">
+          <span class="label-text text-lg text-white">Degree :</span>
+        </label>
+        <input
+          type="text"
+          placeholder="Enter Temperature"
+          id="temperature"
+          class="input input-bordered input-info w-full max-w-xs"
+        />
+        <br />
+        <br />
+        <label class="label">
+          <span class="label-text text-lg text-white">Select Unit :</span>
+        </label>
+        <select id="unit" class="select select-info w-full max-w-xs">
+          <option value="celsius">Celsius</option>
+          <option value="fahrenheit">Fahrenheit</option>
+        </select>
+        <br />
+        <br />
+        <p class="text-white">
+          Result: <span id="result" class="text-white"></span>
+        </p>
+        <br />
+        <div class="flex justify-center">
+          <button class="btn btn-info" onclick="convertTemperature()">
+            Convert
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function convertTemperature() {
+        const temperatureInput = document.getElementById("temperature");
+        const unitSelect = document.getElementById("unit");
+        const resultSpan = document.getElementById("result");
+
+        const temperature = parseFloat(temperatureInput.value);
+        const unit = unitSelect.value;
+
+        if (unit === "celsius") {
+          const fahrenheit = (temperature * 9) / 5 + 32;
+          resultSpan.textContent = `${temperature} °C = ${fahrenheit} °F`;
+        } else {
+          const celsius = ((temperature - 32) * 5) / 9;
+          resultSpan.textContent = `${temperature} °F = ${celsius} °C`;
+        }
+      }
+    </script>
+  </body>
+</html>
